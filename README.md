@@ -20,7 +20,7 @@ The agent can produce detailed, factual and unbiased research reports, with cust
 
 ## Architecture
 The main idea is to run "planner" and "execution" agents, whereas the planner generates questions to research, and the execution agents seek the most related information based on each generated research question. Finally, the planner filters and aggregates all related information and creates a research report. <br /> <br /> 
-The agents leverage both gpt3.5-turbo and gpt-4 to complete a research task. We optimize for costs using each only when necessary. **The average research task takes around 3 minutes to complete, and costs ~$0.1.**
+The agents leverage both gpt3.5-turbo and gpt-4-turbo (128K context) to complete a research task. We optimize for costs using each only when necessary. **The average research task takes around 3 minutes to complete, and costs ~$0.1.**
 
 <div align="center">
 <img align="center" height="500" src="https://cowriter-images.s3.amazonaws.com/architecture.png">
@@ -49,6 +49,15 @@ https://github.com/assafelovic/gpt-researcher/assets/13554167/a00c89a6-a295-4dd0
 - 🔍 Scrapes web sources with javascript support
 - 📂 Keeps track and context of visited and used web sources
 - 📄 Export research reports to PDF and more...
+
+## 📖 Documentation
+
+Please see [here](https://docs.tavily.com/docs/gpt-researcher/getting-started) for full documentation on:
+
+- Getting started (installation, setting up the environment, simple examples)
+- How-To examples (demos, integrations, docker support)
+- Reference (full API docs)
+- Tavily API integration (high-level explanation of core concepts)
 
 ## Quickstart
 > **Step 0** - Install Python 3.11 or later. [See here](https://www.tutorialsteacher.com/python/install-python) for a step-by-step guide.
@@ -93,29 +102,6 @@ $ uvicorn main:app --reload
 <br />
 
 > **Step 5** - Go to http://localhost:8000 on any browser and enjoy researching!
-
-- **update:** if you are having issues with weasyprint, please visit their website and follow the installation instructions: https://doc.courtbouillon.org/weasyprint/stable/first_steps.html
-
-## Try it with Docker
-
-> **Step 1** - Install Docker
-
-Follow instructions at https://docs.docker.com/engine/install/
-
-> **Step 2** - Create .env file with your OpenAI Key or simply export it
-
-```bash
-$ export OPENAI_API_KEY={Your API Key here}
-$ export TAVILY_API_KEY={Your Tavily API Key here}
-```
-
-> **Step 3** - Run the application
-
-```bash
-$ docker-compose up
-```
-
-> **Step 4** - Go to http://localhost:8000 on any browser and enjoy researching!
 
 ## 🚀 Contributing
 We highly welcome contributions! Please check out [contributing](CONTRIBUTING.md) if you're interested.
