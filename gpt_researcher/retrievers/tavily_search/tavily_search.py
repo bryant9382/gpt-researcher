@@ -29,7 +29,8 @@ class TavilySearch():
         try:
             api_key = os.environ["TAVILY_API_KEY"]
         except:
-            raise Exception("Tavily API key not found. Please set the TAVILY_API_KEY environment variable.")
+            raise Exception("Tavily API key not found. Please set the TAVILY_API_KEY environment variable. "
+                            "You can get a key at https://app.tavily.com")
         return api_key
 
     def search(self):
@@ -39,7 +40,7 @@ class TavilySearch():
 
         """
         # Search the query
-        results = self.client.search(self.query, search_depth="basic", max_results=5)
+        results = self.client.search(self.query, search_depth="advanced", max_results=5)
         # Return the results
-        results = [r["url"] for r in results["results"]]
-        return results
+        search_response = [{"href": obj["url"], "body": obj["content"]} for obj in results.get("results", [])]
+        return search_response
