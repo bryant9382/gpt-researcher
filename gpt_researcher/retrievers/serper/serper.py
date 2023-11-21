@@ -1,4 +1,4 @@
-# Serper API Retriever
+# Google Serper Retriever
 
 # libraries
 import os
@@ -6,13 +6,13 @@ import requests
 import json
 
 
-class SerpSearch():
+class SerperSearch():
     """
-    Serper API Retriever
+    Google Serper Retriever
     """
     def __init__(self, query):
         """
-        Initializes the SerpSearch object
+        Initializes the SerperSearch object
         Args:
             query:
         """
@@ -26,9 +26,9 @@ class SerpSearch():
 
         """
         try:
-            api_key = os.environ["SERP_API_KEY"]
+            api_key = os.environ["SERPER_API_KEY"]
         except:
-            raise Exception("Serp API key not found. Please set the SERP_API_KEY environment variable. "
+            raise Exception("Serper API key not found. Please set the SERPER_API_KEY environment variable. "
                             "You can get a key at https://serper.dev/")
         return api_key
 
