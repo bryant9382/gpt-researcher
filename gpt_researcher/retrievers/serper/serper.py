@@ -1,37 +1,34 @@
-# Tavily API Retriever
+# Google Serper Retriever
 
 # libraries
 import os
 import requests
 import json
-from tavily import TavilyClient
 
 
-class SerpSearch():
+class SerperSearch():
     """
-    Tavily API Retriever
+    Google Serper Retriever
     """
     def __init__(self, query):
         """
-        Initializes the TavilySearch object
+        Initializes the SerperSearch object
         Args:
             query:
         """
         self.query = query
         self.api_key = self.get_api_key()
-        self.client = TavilyClient(self.api_key)
 
     def get_api_key(self):
         """
-        Gets the Tavily API key
+        Gets the Serper API key
         Returns:
 
         """
-        # Get the API key
         try:
-            api_key = os.environ["SERP_API_KEY"]
+            api_key = os.environ["SERPER_API_KEY"]
         except:
-            raise Exception("Serp API key not found. Please set the SERP_API_KEY environment variable. "
+            raise Exception("Serper API key not found. Please set the SERPER_API_KEY environment variable. "
                             "You can get a key at https://serper.dev/")
         return api_key
 
@@ -43,9 +40,20 @@ class SerpSearch():
         """
         print("Searching with query {0}...".format(self.query))
         """Useful for general internet search queries using the Serp API."""
-        url = "https://serpapi.com/search.json?engine=google&q=" + self.query + "&api_key=" + self.api_key
-        resp = requests.request("GET", url)
 
+
+        # Search the query (see https://serper.dev/playground for the format)
+        url = "https://google.serper.dev/search"
+
+        headers = {
+        'X-API-KEY': self.api_key,
+        'Content-Type': 'application/json'
+        }
+        data = json.dumps({"q": self.query})
+
+        resp = requests.request("POST", url, headers=headers, data=data)
+
+        # Preprocess the results
         if resp is None:
             return
         try:
@@ -55,10 +63,10 @@ class SerpSearch():
         if search_results is None:
             return
 
-        results = search_results["organic_results"]
+        results = search_results["organic"]
         search_results = []
 
-        # Normalizing results to match the format of the other search APIs
+        # Normalize the results to match the format of the other search APIs
         for result in results:
             # skip youtube results
             if "youtube.com" in result["link"]:
