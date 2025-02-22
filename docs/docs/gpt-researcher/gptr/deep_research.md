@@ -1,4 +1,4 @@
-# Deep Research with GPT Researcher 🚀
+# Deep Research ✨ NEW ✨
 
 With the latest "Deep Research" trend in the AI community, we're excited to implement our own Open source deep research capability! Introducing GPT Researcher's Deep Research - an advanced recursive research system that explores topics with unprecedented depth and breadth.
 
@@ -16,58 +16,6 @@ Think of it as deploying a team of AI researchers, each following their own rese
 
 ## Process Flow
 
-```mermaid
-graph TD
-    A[User Query] --> B[Initialize Deep Research]
-    B --> C[Generate Initial Search Queries]
-    C --> D[Concurrent Research Execution]
-    
-    %% Depth Level 1
-    D --> E1[Research Path 1]
-    D --> E2[Research Path 2]
-    D --> E3[Research Path 3]
-    D --> E4[Research Path 4]
-    
-    %% Processing Results
-    E1 --> F1[Extract Learnings]
-    E2 --> F2[Extract Learnings]
-    E3 --> F3[Extract Learnings]
-    E4 --> F4[Extract Learnings]
-    
-    %% Recursive Depth
-    F1 --> G1[Generate Follow-up Queries]
-    F2 --> G2[Generate Follow-up Queries]
-    F3 --> G3[Generate Follow-up Queries]
-    F4 --> G4[Generate Follow-up Queries]
-    
-    %% Depth Level 2
-    G1 --> H1[Deeper Research]
-    G2 --> H2[Deeper Research]
-    G3 --> H3[Deeper Research]
-    G4 --> H4[Deeper Research]
-    
-    %% Aggregation
-    H1 --> I[Aggregate Results]
-    H2 --> I
-    H3 --> I
-    H4 --> I
-    
-    %% Final Steps
-    I --> J[Synthesize Context]
-    J --> K[Generate Report]
-    
-    %% Progress Tracking
-    B --> L[Progress Tracking]
-    L --> M[Depth Progress]
-    L --> N[Breadth Progress]
-    L --> O[Query Progress]
-    
-    %% Styling
-    classDef process fill:#f9f,stroke:#333,stroke-width:2px
-    classDef tracking fill:#bbf,stroke:#333,stroke-width:2px
-    class A,B,C,D,I,J,K process
-    class L,M,N,O tracking
-```
 
 ## Quick Start
 
